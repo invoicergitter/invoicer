@@ -31,9 +31,29 @@ class theme extends abstracttheme {
 	return $contents;
 	}
 	
-	public function login()
+	public  static function login()
 	{
 		return "formulaire connection ici";
+	}
+	
+	
+	public static function signup()
+	{
+		return "
+				<div>
+					<form method=\"POST\" action=\"".urlpage("signup")."\">
+					<table>
+						<tr><td>societe/nom : </td><td><input type=\"text\" name=\"signup_name\"></td></tr>
+						<tr><td>nom : </td><td><input type=\"text\" name=\"signup_lastname\"></td></tr>
+						<tr><td>prenom : </td><td><input type=\"text\" name=\"signup_firstname\"></td></tr>
+						<tr><td>iban : </td><td><input type=\"text\" name=\"signup_iban\"></td></tr>
+						<tr><td>mail : </td><td><input type=\"text\" name=\"signup_mail\"></td></tr>
+						<tr><td>mdp : </td><td><input type=\"password\" name=\"signup_mdp\"></td></tr>
+						<tr><td></td><td><input type=\"submit\" value=\"enregistrer\" name=\"signup_account\"></td></tr>
+					</table>
+					</form>
+				</div><br>
+				";
 	}
 	
 	public  function built() 

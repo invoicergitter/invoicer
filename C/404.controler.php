@@ -1,8 +1,8 @@
 <?php
-class controler extends abstractcontroler
+class controler404 extends abstractcontroler
 {
 	public static function action()
 	{
-		$_SESSION['articles'][] = "<p>page introuvable</p>";
+		$_SESSION['articles'][] = "<h3>page introuvable</h3>";
 	}
 }

@@ -23,7 +23,6 @@ if(isset($_SESSION['articles']))
 			$theme->addWidget($widget);
 		}	
 	}
-	
 	$theme->built();
 	unset($_SESSION['widgets']);
 	unset($_SESSION['articles']);

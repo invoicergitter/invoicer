@@ -12,7 +12,8 @@ abstract Class abstracttheme {
 	
 	public abstract function built();
 	
-	public abstract function login();
+	public static abstract function login();
+	public static abstract function signup();
 	
 	
 	public function addArticle($content)  {
