@@ -39,14 +39,13 @@ class theme extends abstracttheme {
 	
 	public static function signup()
 	{
-		return "
+		$form =  "
 				<div>
 					<form method=\"POST\" action=\"".urlpage("signup")."\">
 					<table>
 						<tr><td>societe/nom : </td><td><input type=\"text\" name=\"signup_name\"></td></tr>
 						<tr><td>nom : </td><td><input type=\"text\" name=\"signup_lastname\"></td></tr>
 						<tr><td>prenom : </td><td><input type=\"text\" name=\"signup_firstname\"></td></tr>
-						<tr><td>iban : </td><td><input type=\"text\" name=\"signup_iban\"></td></tr>
 						<tr><td>mail : </td><td><input type=\"text\" name=\"signup_mail\"></td></tr>
 						<tr><td>mdp : </td><td><input type=\"password\" name=\"signup_mdp\"></td></tr>
 						<tr><td></td><td><input type=\"submit\" value=\"enregistrer\" name=\"signup_account\"></td></tr>
@@ -54,16 +53,25 @@ class theme extends abstracttheme {
 					</form>
 				</div><br>
 				";
+		
+		return $form;
+		
+	}
+	
+	
+	public function newsletter()
+	{
+		return "<center><form method=\"POST\" action=\"".urlpage("newsletter")."\">mail : <input type=\"text\" name=\"newsletter_mail\" /><br><input type=\"hidden\" name=\"a\" value=\"0\" /><input type=\"submit\" value=\"enregistrer\"></form></center>";
 	}
 	
 	public  function built() 
 	{
-		echo utf8_encode($this->head());
-		echo utf8_encode($this->nav());
-		echo utf8_encode($this->header());
-		echo utf8_encode($this->contents());
-		echo utf8_encode($this->sidebar());
-		echo utf8_encode($this->footer());
+		print_r( utf8_encode($this->head()));
+		print_r( utf8_encode($this->nav()));
+		print_r( utf8_encode($this->header()));
+		print_r( utf8_encode($this->contents()));
+		print_r( utf8_encode($this->sidebar()));
+		print_r( utf8_encode($this->footer()));
 	}
 	
 	

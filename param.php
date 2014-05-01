@@ -20,10 +20,10 @@ $param['lang'] = isset($_SESSION['lang'])?$_SESSION['lang']:'fr';
 /*
  * database params
  */
-$param['db_name'] = 'invoicer_base';
-$param['db_user'] = 'invoicer_base';
-$param['db_host'] = 'invoicer_base.mysql.db';
-$param['db_psw'] = 'z2V63zj6ep2v';
+$param['db_name'] = 'biller';
+$param['db_user'] = 'root';
+$param['db_host'] = 'localhost';
+$param['db_psw'] = '';
 
 
 /*

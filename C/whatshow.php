@@ -6,7 +6,6 @@ session_start();
 require "include.php";
 
 
-
 /*
  * define the relevant page with order
  */
@@ -20,6 +19,7 @@ elseif (isset($_SESSION['page']))
 {
 	$page = $_SESSION['page'];
 }
+
 $_SESSION['page'] = $page;
 $_SESSION['articles'] = array();
 $_SESSION['widgets'] = array();
@@ -46,5 +46,18 @@ else
 $nameclasscontroler::action();
 
 
-
-header('location:../www/index.php');
+/*
+ * return the view to index or if ajax request, it displays result
+ */
+if (isset($_REQUEST['ajax']) and $_REQUEST['ajax'] == 1)
+{
+	foreach($_SESSION['articles'] as $article)
+	{
+		echo utf8_encode($article);
+	}
+	exit(0);
+}
+else
+{
+	header('location:../www/index.php');
+}
