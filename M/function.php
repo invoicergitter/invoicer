@@ -14,5 +14,5 @@ function voc($str)
 
 function urlpage($page)
 {
-	return "../C/whatshow.php?page=".$page;
+	return "index.php?page=".$page;
 }

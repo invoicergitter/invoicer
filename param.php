@@ -29,9 +29,9 @@ $param['db_psw'] = '';
 /*
  * theme params
  */
-$param['theme'] = 'basic';
-$param['link_theme_rep'] = str_replace("\\","/",__DIR__."/V/themes/".$param['theme']."/");
-$param['link_style_rep'] = "../V/themes/".$param['theme']."/"."style/";
+$param['theme'] = 'light';
+$param['link_theme_rep'] = "V/themes/".$param['theme']."/";
+$param['link_style_rep'] = $param['link_theme_rep']."style/";
 
 
 

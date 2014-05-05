@@ -28,14 +28,14 @@ $_SESSION['widgets'] = array();
 /*
  * try to load controler$page if not exist load controler404
  */
-if(file_exists($page.".controler.php"))
+if(file_exists("../C/".$page.".controler.php"))
 {
-	include $page.".controler.php";
+	include "../C/".$page.".controler.php";
 	$nameclasscontroler = "controler".$page;
 }
 else
 {
-	include "404.controler.php" ;
+	include "../C/404.controler.php" ;
 	$nameclasscontroler = "controler404";
 }
 
@@ -59,5 +59,5 @@ if (isset($_REQUEST['ajax']) and $_REQUEST['ajax'] == 1)
 }
 else
 {
-	header('location:../www/index.php');
+	header('location:index.php');
 }

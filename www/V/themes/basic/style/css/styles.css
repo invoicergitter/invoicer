@@ -245,3 +245,10 @@ footer p {
 margin-top: -15px;
 color: #faf0e6;
 }
+
+
+.button
+{
+	width:170px;
+	height:120px;
+}

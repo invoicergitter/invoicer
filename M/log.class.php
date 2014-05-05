@@ -1,6 +1,18 @@
 <?php
 class log
 {
+	
+	
+	public static function showfail($msg)
+	{
+		return "<center><p style=\"color:red;\">".$msg."</p></center>";
+	}
+	
+	public static function showsuccess($msg)
+	{
+		return "<center><p style=\"color:green;\">".$msg."</p></center>";
+	}
+	
 	public static function errorDB($msg)
 	{
 		$link = $GLOBALS['param']['link_data']."log/db.log";

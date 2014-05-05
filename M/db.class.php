@@ -7,7 +7,6 @@ class db
 		
 	public function query($query)
 	{
-		echo $query;
 		$return = array();
 		$connnection = mysqli_connect($GLOBALS['param']['db_host'], $GLOBALS['param']['db_user'], $GLOBALS['param']['db_psw'], $GLOBALS['param']['db_name']);
 		if($connnection)

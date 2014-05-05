@@ -1,0 +1,54 @@
+.widget_mobile
+{
+	
+	width:100%;
+	text-align:center;
+	position:relative;
+	margin-top:50px;
+	box-shadow: 0px 0px 2px 0px grey;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+}
+
+
+.widget_mobile li
+{
+	margin-top:2px;
+	margin-bottom:2px;
+	list-style: none outside none;
+	
+}
+
+.footer_mobile
+{
+	position:relative;
+}
+
+
+nav .img_mobile
+{
+	display:none;
+}
+
+.button_menu 
+{
+	
+	padding-top:5px;
+	
+	color:white;
+	font-weight:bold;
+	text-align:center;
+}
+
+
+
+.nav_mobile li 
+{
+		display:block;
+}
+
+.nav_mobile li 
+{
+		display:block;
+}

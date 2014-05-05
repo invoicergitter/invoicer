@@ -3,20 +3,29 @@ class theme extends abstracttheme {
 	
 	public function __construct($page) {
 		parent::__construct($page);
+		$this->js[] = "jquery.min.js";
+		$this->js[] = "signup.js";
 	}
 	
 	
 	private function head()
 	{
-		return "<!doctype html>
-		<html lang=\"en\">
+		$head ="<!doctype html>
+		<html lang=\"fr\">
 		<head>
 		<meta charset=\"utf-8\" />
-		<title>Biller </title>
-		<link rel=\"stylesheet\" href=\"".$GLOBALS['param']['link_style_rep']."css/styles.css\" type=\"text/css\" media=\"screen\" />
+		<title>Biller </title>";
+		
+		foreach($this->js as $js)
+		{
+			$head .= "<script src=\"".$GLOBALS['param']['link_theme_rep']."style/js/".$js."\"></script>";
+		}
+		
+		$head .= "<link rel=\"stylesheet\" href=\"".$GLOBALS['param']['link_style_rep']."css/styles.css\" type=\"text/css\" media=\"screen\" />
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"".$GLOBALS['param']['link_style_rep']."css/print.css\" media=\"print\" />
 		<!--[if IE]><script src=\"http://html5shiv.googlecode.com/svn/trunk/html5.js\"></script><![endif]-->
 		</head>";
+		return $head;
 	}
 	
 
@@ -33,14 +42,23 @@ class theme extends abstracttheme {
 	
 	public  static function login()
 	{
-		return "formulaire connection ici";
+		return "
+				<div>
+					<form method=\"POST\" action=\"\">
+						mail : <input type=\"text\" name=\"login_mail\" /><br>
+						mot de passe : <input type=\"password\" name=\"login_psw\" /><br>
+						<input type=\"submit\" value=\"connection\" name=\"login_submit\" />
+					</form>
+				</div>
+				";
 	}
-	
-	
+		
 	public static function signup()
 	{
-		$form =  "
-				<div>
+		
+		$formowner =  "
+				<div class=\"owner\" style=\"display:none;\">
+					<p>Propriétaire</p>
 					<form method=\"POST\" action=\"".urlpage("signup")."\">
 					<table>
 						<tr><td>societe/nom : </td><td><input type=\"text\" name=\"signup_name\"></td></tr>
@@ -53,8 +71,31 @@ class theme extends abstracttheme {
 					</form>
 				</div><br>
 				";
+		$formtenant =  "
+				<div class=\"tenant\" style=\"display:none;\">
+					<p>Locataire</p>
+					<form method=\"POST\" action=\"".urlpage("signup")."\">
+					<table>
+						<tr><td>code du propriétaire : </td><td><input type=\"text\" name=\"signup_code_owner\"></td></tr>
+						<tr><td>nom : </td><td><input type=\"text\" name=\"signup_name\"></td></tr>
+						<tr><td>mail : </td><td><input type=\"text\" name=\"signup_mail\"></td></tr>
+						<tr><td>mdp : </td><td><input type=\"password\" name=\"signup_mdp\"></td></tr>
+						<tr><td>adresse : </td><td><input type=\"text\" name=\"signup_address\"></td></tr>
+						<tr><td>pays : </td><td><input type=\"text\" name=\"signup_country\"></td></tr>
+						<tr><td></td><td><input type=\"submit\" value=\"enregistrer\" name=\"signup_tenant\"></td></tr>
+					</table>
+					</form>
+				</div><br>
+				";
 		
-		return $form;
+		$html = "<div> <p>Qui êtes vous ? <p>
+					<input type=\"image\" class=\"button\" id=\"owner\" src=\"".($GLOBALS['param']['link_theme_rep']."style/images/homeowner.jpg")."\"/>
+					<input type=\"image\" class=\"button\" id=\"tenant\" src=\"".($GLOBALS['param']['link_theme_rep']."style/images/tenant.jpg")."\"/>
+					<br>
+							".$formowner.$formtenant."
+				</div>";
+		
+		return $html;
 		
 	}
 	

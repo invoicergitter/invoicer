@@ -2,13 +2,17 @@
 require "../param.php";
 
 require "../M/function.php";
-
-require "../V/lang/".$GLOBALS['param']['lang']."/voc.php";
 require "../M/abstracttheme.class.php";
-require $GLOBALS['param']['link_theme_rep']."/theme.class.php";
-require "../M/menu.class.php";
-require "../M/db.class.php";
+require "../M/abstractcontroler.class.php";
 require "../M/abstracttable.class.php";
+require "V/lang/".$GLOBALS['param']['lang']."/voc.php";
+require $GLOBALS['param']['link_theme_rep']."/theme.class.php";
+require "../M/db.class.php";
 require "../M/account.class.php";
+require "../M/user.class.php";
 require "../M/formule.class.php";
+require "../M/newsletter.class.php";
+require "../M/tenant.class.php";
+require "../M/menu.class.php";
+require "../M/log.class.php";
 

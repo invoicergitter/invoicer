@@ -24,7 +24,7 @@ class controlernewsletter extends abstractcontroler
 			}
 			
 			$return .= "</p>" ;
-			$_SESSION['articles'][] = $return;
+			$GLOBALS['articles'][] = $return;
 			
 		}
 		if (isset($_REQUEST['a']) and  $_REQUEST['a']== 777 and isset($_REQUEST['newsletter_mail']) and isset($_REQUEST['c']) and !empty($_REQUEST['newsletter_mail']))
@@ -37,12 +37,12 @@ class controlernewsletter extends abstractcontroler
 					$return .= "les mails ne seront plus envoyaient à ".$_REQUEST['newsletter_mail'];
 				}
 				$return .= "</p>";
-				$_SESSION['articles'][] = $return;
+				$GLOBALS['articles'][] = $return;
 		}
 		else
 		{
 			$theme = new theme("");
-			$_SESSION['articles'][] = $theme->newsletter();
+			$GLOBALS['articles'][] = $theme->newsletter();
 		}
 		
 	}

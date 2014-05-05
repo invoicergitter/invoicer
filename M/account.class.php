@@ -51,8 +51,7 @@ class account extends table
 				VALUES ( NULL , '".$this->name."' , ".$this->id_formule." , '".$this->date."' , ".$this->check." , '".$this->iban."' , '".$this->mail."' );";
 		
 		$this->id = $db->exec($query);
-		log::newAccount($this->name, $this->id_formule, $this->mail);
-		
+		log::newAccount($this->name, $this->id_formule, $this->mail);		
 	}
 	
 	public function update()
