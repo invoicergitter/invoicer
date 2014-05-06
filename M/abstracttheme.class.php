@@ -13,8 +13,9 @@ abstract Class abstracttheme {
 	
 	public abstract function built();
 	
-	public static abstract function login();
-	public static abstract function signup();
+	public static abstract function login($controler);
+	public static abstract function signuptenant();
+	public static abstract function signupowner();
 
 	public function addArticle($content)  {
 		$this->articles[] =$content;

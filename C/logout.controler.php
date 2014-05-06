@@ -1,5 +1,5 @@
 <?php
-class controlerlogin extends abstractcontroler
+class controlerlogout extends abstractcontroler
 {
 	public static function action()
 	{

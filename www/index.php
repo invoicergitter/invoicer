@@ -1,7 +1,8 @@
 <?php
 session_start();
+
 /*
- * you must define special param before include.php
+ * define special param before include.php
  */
 include "include.php";
 
@@ -12,8 +13,6 @@ if(isset($_GET['c']) and $_GET['c'] == $GLOBALS['param']['online_exception_pass'
 
 if ((isset($GLOBALS['param']['online']) and $GLOBALS['param']['online']) or (isset($_SESSION['online'])))
 {
-	
-	
 		$page = "home";
 		if (isset($_GET['page']))
 		{
@@ -27,18 +26,13 @@ if ((isset($GLOBALS['param']['online']) and $GLOBALS['param']['online']) or (iss
 		/*
 		 * try to load controler$page if not exist load controler404
 		*/
-		if(file_exists("../C/".$page.".controler.php"))
+		$nameclasscontroler = "controler".$page;
+		
+		if(!class_exists($nameclasscontroler))
 		{
-			include "../C/".$page.".controler.php";
-			$nameclasscontroler = "controler".$page;
-		}
-		else
-		{
-			include "../C/404.controler.php" ;
 			$nameclasscontroler = "controler404";
 		}
-		
-		
+				
 		/*
 		 * call the controler
 		*/

@@ -5,7 +5,6 @@ class theme extends abstracttheme {
 		parent::__construct($page);
 		$this->js[] = "jquery.min.js";
 		$this->js[] = "mobile.js";
-		$this->js[] = "signup.js";
 	}
 	
 	
@@ -42,42 +41,47 @@ class theme extends abstracttheme {
 	return $contents;
 	}
 	
-	public  static function login()
+	
+	
+	public  static function login($controler)
 	{
-		return "
-				<div class=\"form\">
+		return "<div class=\"form\">
 					<form method=\"POST\" action=\"\">
-						mail : <input type=\"text\" name=\"login_mail\" /><br>
-						mot de passe : <input type=\"password\" name=\"login_psw\" /><br>
-						<input type=\"submit\" value=\"connection\" name=\"login_submit\" />
+					<table>
+					<tr class=\"table_title\"><td>Vous avez un compte? Connectez vous</td></tr>
+					<tr><td>mail :</td><td> <input type=\"text\" name=\"".$controler."_mail\" /></td></tr>
+					<tr><td>mot de passe : </td><td><input type=\"password\" name=\"".$controler."_psw\" /></td></tr>
+					<tr><td></td><td><input type=\"submit\" value=\"connection\" name=\"".$controler."_submit\" /></td></tr>
 					</form>
-				</div>
+				
 				";
 	}
-		
-	public static function signup()
+	public static function signupowner()
 	{
-		
-		$formowner =  "
-				<div class=\"owner\" style=\"display:none;\">
-					<p>Propriétaire</p>
+		return   "
+				
 					<form method=\"POST\" action=\"".urlpage("signup")."\">
-					<table>
+			
+						<tr class=\"table_title\"><td>Sinon inscrivez vous rapidement</td></tr>
 						<tr><td>societe/nom : </td><td><input type=\"text\" name=\"signup_name\"></td></tr>
 						<tr><td>nom : </td><td><input type=\"text\" name=\"signup_lastname\"></td></tr>
 						<tr><td>prenom : </td><td><input type=\"text\" name=\"signup_firstname\"></td></tr>
 						<tr><td>mail : </td><td><input type=\"text\" name=\"signup_mail\"></td></tr>
 						<tr><td>mdp : </td><td><input type=\"password\" name=\"signup_mdp\"></td></tr>
 						<tr><td></td><td><input type=\"submit\" value=\"enregistrer\" name=\"signup_account\"></td></tr>
-					</table>
 					</form>
+					</table>
 				</div><br>
 				";
-		$formtenant =  "
-				<div class=\"tenant\" style=\"display:none;\">
-					<p>Locataire</p>
+	}
+	public static function signuptenant()
+	{
+		
+		
+		return "
+				
 					<form method=\"POST\" action=\"".urlpage("signup")."\">
-					<table>
+						<tr class=\"table_title\"><td>Sinon inscrivez vous gratuitement</td></tr>
 						<tr><td>code du propriétaire : </td><td><input type=\"text\" name=\"signup_code_owner\"></td></tr>
 						<tr><td>nom : </td><td><input type=\"text\" name=\"signup_name\"></td></tr>
 						<tr><td>mail : </td><td><input type=\"text\" name=\"signup_mail\"></td></tr>
@@ -85,20 +89,11 @@ class theme extends abstracttheme {
 						<tr><td>adresse : </td><td><input type=\"text\" name=\"signup_address\"></td></tr>
 						<tr><td>pays : </td><td><input type=\"text\" name=\"signup_country\"></td></tr>
 						<tr><td></td><td><input type=\"submit\" value=\"enregistrer\" name=\"signup_tenant\"></td></tr>
-					</table>
 					</form>
+				</table>
+					
 				</div><br>
 				";
-		
-		$html = "<div> <p>Qui êtes vous ? <p>
-					<input type=\"image\" class=\"button\" id=\"owner\" src=\"".($GLOBALS['param']['link_theme_rep']."style/images/homeowner.jpg")."\"/>
-					<input type=\"image\" class=\"button\" id=\"tenant\" src=\"".($GLOBALS['param']['link_theme_rep']."style/images/tenant.jpg")."\"/>
-					<br>
-							".$formowner.$formtenant."
-				</div>";
-		
-		return $html;
-		
 	}
 	
 	

@@ -1,5 +1,5 @@
 <?php
-class controlersignup extends abstractcontroler
+class controlerowner extends abstractcontroler
 {
 	public static function action()
 	{
@@ -52,47 +52,12 @@ class controlersignup extends abstractcontroler
 			}			      
 			
 		}
-		elseif (isset($_POST['signup_tenant']))
+		else 
 		{
-			$account = new account();
-			$account->load(array('id' => $_POST['signup_code_owner'] ));
 			
-			$tenant = new tenant();
-			$tenant->load( array('mail' => $_POST['signup_mail']));
-			
-			
-			
-			if($tenant->id <= 0)
-			{
-				if ($account->id > 0)
-				{
-					$tenant->address = $_POST['signup_address'];
-					$tenant->psw = $_POST['signup_mdp'];
-					$tenant->country = $_POST['signup_country'];
-					$tenant->id_account = $account->id;
-					$tenant->mail = $_POST['signup_mail'];
-					$tenant->name = $_POST['signup_name'];
-					$tenant->insert();
-					
-					if ($tenant->id > 0)
-					{
-						$GLOBALS['articles'][] = log::showsuccess("new account created");
-					}
-					else 
-					{
-						$GLOBALS['articles'][] = log::showfail("");
-					}
-				}
-				else
-				{
-					$GLOBALS['articles'][] = log::showfail("le code du propriétaire n'existe pas");
-				}
-			}
-			else 
-			{
-				$GLOBALS['articles'][] = log::showfail("un compte utilise déja cette adresse mail");
-			}
 		}
-		$GLOBALS['articles'][] = theme::signup();
+		$GLOBALS['articles'][] = "<img class=\"img_presentation\"src=\"".$GLOBALS['param']['link_style_rep']."images/homeowner.jpg\" alt=\"Propriétaire\"/>";
+		$GLOBALS['articles'][] = theme::login("owner");
+		$GLOBALS['articles'][] = theme::signupowner();
 	}
 }
