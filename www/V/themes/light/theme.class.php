@@ -7,6 +7,10 @@ class theme extends abstracttheme {
 		$this->js[] = "mobile.js";
 	}
 	
+	public static function showfail($msg)
+	{
+		return "<p style=\"color:red;\">".$msg."</p>";
+	}
 	
 	private function head()
 	{
@@ -32,12 +36,12 @@ class theme extends abstracttheme {
 
 	private function contents()
 	{
-		$contents =  "<center><section id=\"main\">";
+		$contents =  "<center><section id=\"main\"><div class=\"border\">";
 		foreach ($this->articles as $article)
 		{
 			$contents .= "<article>".$article."</article>";
 		}
-		$contents .= "</section></center>";
+		$contents .= "<div></section></center>";
 	return $contents;
 	}
 	

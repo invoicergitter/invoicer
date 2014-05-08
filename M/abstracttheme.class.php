@@ -17,6 +17,9 @@ abstract Class abstracttheme {
 	public static abstract function signuptenant();
 	public static abstract function signupowner();
 
+	public static abstract function showfail($msg);
+	
+	
 	public function addArticle($content)  {
 		$this->articles[] =$content;
 	}

@@ -6,13 +6,6 @@ session_start();
  */
 include "include.php";
 
-if(isset($_GET['c']) and $_GET['c'] == $GLOBALS['param']['online_exception_pass'])
-{
-	$_SESSION['online'] = true;
-}
-
-if ((isset($GLOBALS['param']['online']) and $GLOBALS['param']['online']) or (isset($_SESSION['online'])))
-{
 		$page = "home";
 		if (isset($_GET['page']))
 		{
@@ -67,11 +60,6 @@ if ((isset($GLOBALS['param']['online']) and $GLOBALS['param']['online']) or (iss
 		}
 		$theme->built();
 			
-}
-else 
-{
-	header('location:maintenance.html');
-}
 
 
 ?>

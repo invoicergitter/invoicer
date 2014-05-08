@@ -10,13 +10,14 @@ class tenant extends table
 	public  $psw = "";
 	public  $date ;
 	public  $check = 0;
+	public  $code ;
 
 	public function __construct($id = null)
 	{
 		parent::__construct("tenants");
 		
 		$this->date = date( "Y-m-d",time());
-		
+		$this->code = md5(time());
 		if ($id != null and is_int($id))
 		{
 			$this->load('id',$id);
@@ -28,6 +29,7 @@ class tenant extends table
 		$result = parent::load($array);
 		if($result)
 		{
+			$this->id = isset($result['id'])?$result['id']:$this->id;
 			$this->name = isset($result['name'])?$result['name']:$this->name;
 			$this->address = isset($result['address'])?$result['address']:$this->address;
 			$this->country = isset($result['country'])?$result['country']:$this->country;
@@ -35,6 +37,8 @@ class tenant extends table
 			$this->mail = isset($result['mail'])?$result['mail']:$this->mail;
 			$this->psw = isset($result['psw'])?$result['psw']:$this->psw;
 			$this->date = isset($result['date'])?$result['date']:$this->date;
+			$this->check = isset($result['check'])?$result['check']:$this->check;
+			$this->code = isset($result['code'])?$result['code']:$this->code;
 		}
 	}
 	public function all()
@@ -49,8 +53,8 @@ class tenant extends table
 		$db = new db();
 		$query = "
 				INSERT INTO ".$this->table." (
-					`id` ,`name` ,`address` ,`country` ,`id_account` ,`mail`,`psw`  ,`date`)
-				VALUES ( NULL , '".$this->name."' , '".$this->address."' , '".$this->country."' , ".$this->id_account." , '".$this->mail."' , '".md5($this->psw)."' , '".$this->date."' );";
+					`id` ,`name` ,`address` ,`country` ,`id_account` ,`mail`,`psw`  ,`date`,`code`)
+				VALUES ( NULL , '".$this->name."' , '".$this->address."' , '".$this->country."' , ".$this->id_account." , '".$this->mail."' , '".md5($this->psw)."' , '".$this->date."' , '".$this->code."' );";
 		
 		$this->id = $db->exec($query);	
 	}

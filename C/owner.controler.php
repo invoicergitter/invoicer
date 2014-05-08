@@ -52,10 +52,31 @@ class controlerowner extends abstractcontroler
 			}			      
 			
 		}
-		else 
+		elseif(isset($_POST['owner_mail']) and isset($_POST['owner_psw']) )
 		{
+			$user = new user();
+			$user->load( array('mail' => $_REQUEST['owner_mail'] , 'psw' => md5($_REQUEST['owner_psw'])));
 			
+			if ($user->id > 0) {
+				$account = new account();
+				$account->load(array('id' => $user->id_account));
+				echo "id = ".$account->id;
+				if($account->id > 0)
+				{
+					$_SESSION['user'] = serialize($user);
+					$_SESSION['account'] = serialize($account);
+					header('location:index.php');
+				}
+				else
+				{
+					$GLOBALS['articles'][] = theme::showfail("aucun compte associé à votre adresse mail");
+				}
+			}
+			else {
+				$GLOBALS['articles'][] = theme::showfail("identifiant ou mot de passe incorrect");
+			}
 		}
+		
 		$GLOBALS['articles'][] = "<img class=\"img_presentation\"src=\"".$GLOBALS['param']['link_style_rep']."images/homeowner.jpg\" alt=\"Propriétaire\"/>";
 		$GLOBALS['articles'][] = theme::login("owner");
 		$GLOBALS['articles'][] = theme::signupowner();
