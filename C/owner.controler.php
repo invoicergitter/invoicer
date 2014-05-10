@@ -3,6 +3,14 @@ class controlerowner extends abstractcontroler
 {
 	public static function action()
 	{
+		if(isset($_SESSION['user']))
+		{
+			header('location:'.urlpage("homeowner")); 
+		}
+		elseif(isset($_SESSION['account']))
+		{
+			header('location:'.urlpage("home"));
+		}
 		
 		if(isset($_POST['signup_account']))
 		{
@@ -34,13 +42,13 @@ class controlerowner extends abstractcontroler
 					else 
 					{
 						
-						$GLOBALS['articles'][] = log::showfail("la création de compte est actuellemet indisponible");
+						$GLOBALS['articles'][] = log::showfail("la crï¿½ation de compte est actuellemet indisponible");
 						log::errorDB("error  user not inserted but account yes");
 					}
 				}
 				else
 				{
-					$GLOBALS['articles'][] = log::showfail("la création de compte est actuellemet indisponible");
+					$GLOBALS['articles'][] = log::showfail("la crï¿½ation de compte est actuellemet indisponible");
 					log::errorDB("error account not inserted");
 				}
 				
@@ -48,7 +56,7 @@ class controlerowner extends abstractcontroler
 			else
 			{
 				
-				$GLOBALS['articles'][] = log::showfail("un compte est déja créé avec cette adresse mail");
+				$GLOBALS['articles'][] = log::showfail("un compte est dï¿½ja crï¿½ï¿½ avec cette adresse mail");
 			}			      
 			
 		}
@@ -65,11 +73,11 @@ class controlerowner extends abstractcontroler
 				{
 					$_SESSION['user'] = serialize($user);
 					$_SESSION['account'] = serialize($account);
-					header('location:index.php');
+					header('location:'.urlpage("home"));
 				}
 				else
 				{
-					$GLOBALS['articles'][] = theme::showfail("aucun compte associé à votre adresse mail");
+					$GLOBALS['articles'][] = theme::showfail("aucun compte associï¿½ ï¿½ votre adresse mail");
 				}
 			}
 			else {
@@ -77,7 +85,7 @@ class controlerowner extends abstractcontroler
 			}
 		}
 		
-		$GLOBALS['articles'][] = "<img class=\"img_presentation\"src=\"".$GLOBALS['param']['link_style_rep']."images/homeowner.jpg\" alt=\"Propriétaire\"/>";
+		$GLOBALS['articles'][] = "<img class=\"img_presentation\"src=\"".$GLOBALS['param']['link_style_rep']."images/homeowner.jpg\" alt=\"Propriï¿½taire\"/>";
 		$GLOBALS['articles'][] = theme::login("owner");
 		$GLOBALS['articles'][] = theme::signupowner();
 	}

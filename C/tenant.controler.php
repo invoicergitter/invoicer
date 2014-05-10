@@ -3,6 +3,15 @@ class controlertenant extends abstractcontroler
 {
 	public static function action()
 	{
+		if(isset($_SESSION['tenant']))
+		{
+			header('location:'.urlpage("hometenant"));
+		}
+		elseif(isset($_SESSION['account']))
+		{
+			header('location:'.urlpage("home"));
+		}
+		
 		if (isset($_POST['signup_tenant']))
 		{
 			$account = new account();
@@ -33,12 +42,12 @@ class controlertenant extends abstractcontroler
 				}
 				else
 				{
-					$GLOBALS['articles'][] = log::showfail("le code du propriétaire n'existe pas");
+					$GLOBALS['articles'][] = log::showfail("le code du propriï¿½taire n'existe pas");
 				}
 			}
 			else 
 			{
-				$GLOBALS['articles'][] = log::showfail("un compte utilise déja cette adresse mail");
+				$GLOBALS['articles'][] = log::showfail("un compte utilise dï¿½ja cette adresse mail");
 			}
 		}
 		elseif(isset($_POST['tenant_mail']) and isset($_POST['tenant_psw']) )
@@ -51,21 +60,24 @@ class controlertenant extends abstractcontroler
 				print_r($account);
 				if($account->id > 0)
 				{
-					if($tenant->check > 0)
-					{
+					/*
+					 * dÃ©commenter pour vÃ©rifier les mail
+					 *
+					 *if($tenant->check > 0)
+					{*/
 					$_SESSION['tenant'] = serialize($tenant);
 					$_SESSION['account'] = serialize($account);
-					header('location:index.php');
-					}
+					header('location:'.urlpage("home"));
+					/*}
 					else
 					{
 						$mail = new mail($tenant->mail);
 						$GLOBALS['articles'][] = $mail->sendcheckmail($tenant->name, $tenant->code);
-					}
+					}*/
 				}
 				else
 				{
-					$GLOBALS['articles'][] = theme::showfail("aucun compte associé à votre adresse mail");
+					$GLOBALS['articles'][] = theme::showfail("aucun compte associï¿½ ï¿½ votre adresse mail");
 				}
 			}
 			else

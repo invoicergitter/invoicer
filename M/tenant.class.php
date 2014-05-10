@@ -24,23 +24,6 @@ class tenant extends table
 		}
 	}
 	
-	public function load($array)
-	{
-		$result = parent::load($array);
-		if($result)
-		{
-			$this->id = isset($result['id'])?$result['id']:$this->id;
-			$this->name = isset($result['name'])?$result['name']:$this->name;
-			$this->address = isset($result['address'])?$result['address']:$this->address;
-			$this->country = isset($result['country'])?$result['country']:$this->country;
-			$this->id_account = isset($result['id_account'])?$result['id_account']:$this->id_account;
-			$this->mail = isset($result['mail'])?$result['mail']:$this->mail;
-			$this->psw = isset($result['psw'])?$result['psw']:$this->psw;
-			$this->date = isset($result['date'])?$result['date']:$this->date;
-			$this->check = isset($result['check'])?$result['check']:$this->check;
-			$this->code = isset($result['code'])?$result['code']:$this->code;
-		}
-	}
 	public function all()
 	{
 		/*

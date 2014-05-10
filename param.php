@@ -1,4 +1,4 @@
-<?php
+x<?php
 
 /*
  * global params
@@ -20,7 +20,7 @@ $param['lang'] = isset($_SESSION['lang'])?$_SESSION['lang']:'fr';
 /*
  * database params
  */
-$param['db_name'] = 'biller';
+$param['db_name'] = 'invoicer';
 $param['db_user'] = 'root';
 $param['db_host'] = 'localhost';
 $param['db_psw'] = '';

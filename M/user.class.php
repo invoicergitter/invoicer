@@ -21,22 +21,7 @@ class user extends table
 			$this->load('id',$id);
 		}
 	}
-	
-	public function load($array)
-	{
-		$result = parent::load($array);
-		if($result)
-		{
-			$this->firstname = isset($result['firstname'])?$result['firstname']:$this->firstname;
-			$this->lastname = isset($result['lastname'])?$result['lastname']:$this->lastname;
-			$this->id = isset($result['id'])?$result['id']:$this->id;
-			$this->id_account = isset($result['id_account'])?$result['id_account']:$this->id_account;
-			$this->access = isset($result['access'])?$result['access']:$this->access;
-			$this->mail = isset($result['mail'])?$result['mail']:$this->mail;
-			$this->date = isset($result['date'])?$result['date']:$this->date;
-		}	
-	}
-	
+		
 	public function all()
 	{
 		/*

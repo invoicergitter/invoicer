@@ -11,6 +11,10 @@ class theme extends abstracttheme {
 	{
 		return "<p style=\"color:red;\">".$msg."</p>";
 	}
+	public static function showsuccess($msg)
+	{
+		return "<p style=\"color:green;\">".$msg."</p>";
+	}
 	
 	private function head()
 	{
@@ -86,7 +90,7 @@ class theme extends abstracttheme {
 				
 					<form method=\"POST\" action=\"".urlpage("signup")."\">
 						<tr class=\"table_title\"><td>Sinon inscrivez vous gratuitement</td></tr>
-						<tr><td>code du propriétaire : </td><td><input type=\"text\" name=\"signup_code_owner\"></td></tr>
+						<tr><td>code du propriï¿½taire : </td><td><input type=\"text\" name=\"signup_code_owner\"></td></tr>
 						<tr><td>nom : </td><td><input type=\"text\" name=\"signup_name\"></td></tr>
 						<tr><td>mail : </td><td><input type=\"text\" name=\"signup_mail\"></td></tr>
 						<tr><td>mdp : </td><td><input type=\"password\" name=\"signup_mdp\"></td></tr>
@@ -115,18 +119,31 @@ class theme extends abstracttheme {
 	protected function submenu()
 	{
 		$menu = menu::gridMenu();
-		;
-	
+		$sub = array();
 		if (!array_key_exists($this->page,$menu) or empty($menu[$this->page]['sub']))
 		{
-			return "";
+			foreach($menu as $onglet)
+			{
+				if(array_key_exists($this->page,$onglet['sub']))
+				{
+					
+					$sub = $onglet;
+					break;
+				}
+			}
+			if(empty($sub))
+			{
+				return "";
+			}
 		}
-	
-		$sub = $menu[$this->page];
+		else
+		{
+			$sub = $menu[$this->page];
+		}
 		$sm = "<div class=\"widget\"><h3>quoi faire ?</h3><ul>";
 		foreach( $sub['sub'] as $lien => $name)
 		{
-			$sm .= "<li><a href=\"".urlpage($lien)."\">".$name."</a></li>";
+			$sm .= "<li><a href=\"".urlpage($lien)."\">".utf8_decode($name)."</a></li>";
 		}
 			
 		$sm .="</ul><div>";

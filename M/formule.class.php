@@ -17,14 +17,7 @@ class formule extends table
 			$this->load('id',$id);
 		}
 	}
-	
-	public function load($array)
-	{
-		/*
-		 * TO DO IMPLEMENTED
-		*/
-	}
-	
+		
 	public function insert()
 	{
 		$db = new db();

@@ -21,20 +21,6 @@ class account extends table
 		}
 	}
 	
-	public function load($array)
-	{
-		$result = parent::load($array);
-		if($result)
-		{
-			$this->name = isset($result['name'])?$result['name']:$this->name;
-			$this->id_formule = isset($result['id_formule'])?$result['id_formule']:$this->id_formule;
-			$this->id = isset($result['id'])?$result['id']:$this->id;
-			$this->date = isset($result['date'])?$result['date']:$this->date;
-			$this->check = isset($result['check'])?$result['check']:$this->check;
-			$this->iban = isset($result['iban'])?$result['iban']:$this->iban;
-			$this->mail = isset($result['mail'])?$result['mail']:$this->mail;
-		}
-	}
 	public function all()
 	{
 		/*
