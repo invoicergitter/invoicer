@@ -13,6 +13,7 @@ abstract Class abstracttheme {
 	
 	public abstract function built();
 	
+	public static abstract function formaddtransaction();
 	public static abstract function login($controler);
 	public static abstract function signuptenant();
 	public static abstract function signupowner();

@@ -12,7 +12,7 @@ class user extends table
 
 	public function __construct($id = null)
 	{
-		parent::__construct("users");
+		parent::__construct("users",__CLASS__);
 		
 		$this->date = date( "Y-m-d",time());
 		
@@ -20,13 +20,6 @@ class user extends table
 		{
 			$this->load('id',$id);
 		}
-	}
-		
-	public function all()
-	{
-		/*
-		 * TO DO IMPLEMENTED
-		*/
 	}
 	
 	public function insert()

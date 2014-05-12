@@ -44,5 +44,20 @@ class db
 		return htmlspecialchars(addslashes(trim($str)));
 	}
 	
-	
+	public static function getWhere($array = array())
+	{
+		if (empty($array))
+		{
+			return "";
+		}
+		else 
+		{
+			$where = array();
+			foreach($array as $col => $val)
+			{
+				$where[] = "`".$col."` = '".$val."' ";
+			}
+			return  "WHERE ".join(" and ",$where);
+		}
+	}
 }

@@ -14,29 +14,13 @@ class transaction extends table
 
 	public function __construct($id = null)
 	{
-		parent::__construct("accounts");		
+		parent::__construct("transaction",__CLASS__);		
 		if ($id != null and is_int($id))
 		{
 			$this->load('id',$id);
 		}
 	}
-	
-	public function all()
-	{
-		/*
-		 *  TO DO
-		 */
 		
-		$transactions = array(); 
-		$db = new db();
-		$query = "SELECT * FROM ".$this->table;
-		$result = $db->query($query);
-		if($result != false and !empty($result))
-		{
-			
-		}
-	}
-	
 	public function insert()
 	{
 		$db = new db();

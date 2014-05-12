@@ -11,7 +11,7 @@ class newsletter extends table
 
 	public function __construct($id = null)
 	{
-		parent::__construct("newsletter");
+		parent::__construct("newsletter",__CLASS__);
 		
 		$this->date = date( "Y-m-d",time());
 		
@@ -35,13 +35,7 @@ class newsletter extends table
 			$this->code = isset($result['code'])?$result['code']:$this->code;
 		}
 	}
-	public function all()
-	{
-		/*
-		 * TO DO IMPLEMENTED
-		*/
-	}
-	
+
 	public function insert()
 	{
 		$db = new db();

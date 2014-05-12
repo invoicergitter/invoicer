@@ -11,10 +11,11 @@ class tenant extends table
 	public  $date ;
 	public  $check = 0;
 	public  $code ;
+	public  $tel ;
 
 	public function __construct($id = null)
 	{
-		parent::__construct("tenants");
+		parent::__construct("tenants",__CLASS__);
 		
 		$this->date = date( "Y-m-d",time());
 		$this->code = md5(time());
@@ -24,20 +25,13 @@ class tenant extends table
 		}
 	}
 	
-	public function all()
-	{
-		/*
-		 * TO DO IMPLEMENTED
-		*/
-	}
-	
 	public function insert()
 	{
 		$db = new db();
 		$query = "
 				INSERT INTO ".$this->table." (
-					`id` ,`name` ,`address` ,`country` ,`id_account` ,`mail`,`psw`  ,`date`,`code`)
-				VALUES ( NULL , '".$this->name."' , '".$this->address."' , '".$this->country."' , ".$this->id_account." , '".$this->mail."' , '".md5($this->psw)."' , '".$this->date."' , '".$this->code."' );";
+					`id` ,`name` ,`address` ,`country` ,`id_account` ,`mail`,`psw`  ,`date`, `code`, `tel`)
+				VALUES ( NULL , '".$this->name."' , '".$this->address."' , '".$this->country."' , ".$this->id_account." , '".$this->mail."' , '".md5($this->psw)."' , '".$this->date."' , '".$this->code."' '".$this->tel."' );";
 		
 		$this->id = $db->exec($query);	
 	}

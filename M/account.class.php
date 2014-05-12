@@ -11,7 +11,7 @@ class account extends table
 
 	public function __construct($id = null)
 	{
-		parent::__construct("accounts");
+		parent::__construct("accounts",__CLASS__);
 		
 		$this->date = date( "Y-m-d",time());
 		
@@ -20,14 +20,7 @@ class account extends table
 			$this->load('id',$id);
 		}
 	}
-	
-	public function all()
-	{
-		/*
-		 * TO DO IMPLEMENTED
-		*/
-	}
-	
+
 	public function insert()
 	{
 		$db = new db();

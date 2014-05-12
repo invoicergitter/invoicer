@@ -10,7 +10,7 @@ class formule extends table
 
 	public function __construct($id = null)
 	{
-		parent::__construct("formules");
+		parent::__construct("formules",__CLASS__);
 				
 		if ($id != null and is_int($id))
 		{
@@ -38,12 +38,4 @@ class formule extends table
 		return ($result > 0)?true:false;
 	}
 
-	
-	public function all()
-	{
-		$db = new db();
-		$query = "SELECT * FROM ".$this->table;
-		$result = $db->query($query);
-		return $result;
-	}
 }

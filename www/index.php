@@ -39,7 +39,7 @@ include "include.php";
 		{
 			foreach($GLOBALS['articles'] as $article)
 			{
-				echo utf8_encode($article);
+				echo utf8_decode($article);
 			}
 			exit(0);
 		}

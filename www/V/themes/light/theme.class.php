@@ -18,7 +18,7 @@ class theme extends abstracttheme {
 	
 	private function head()
 	{
-		$head ="<!doctype html>
+		$head = "<!doctype html>
 		<html lang=\"fr\">
 		<head>
 		<meta charset=\"utf-8\" />
@@ -37,7 +37,6 @@ class theme extends abstracttheme {
 		return $head;
 	}
 	
-
 	private function contents()
 	{
 		$contents =  "<center><section id=\"main\"><div class=\"border\">";
@@ -49,7 +48,28 @@ class theme extends abstracttheme {
 	return $contents;
 	}
 	
-	
+	public static function formaddtransaction()
+	{
+		$tenant = new tenant();
+		$all = $tenant->all();	
+		$form = "<div class=\"form\">
+					<form method=\"POST\" action=\"\">
+					<table>
+					<tr class=\"table_title\"><td>Nouvelle transaction</td></tr>
+					<tr><td>Locataire :</td></tr>";
+		
+		foreach($all as $t)
+		{
+			$form .= "<tr><td><input type=\"checkbox\" value=\"".$t->id."\"/></td><td>".$t->name."</td></tr>";
+		}
+		$form .= "<tr><td>montant :</td><td> <input type=\"text\" name=\"\" /></td></tr>
+					<tr><td>Commentaire :</td><td> <input type=\"text\" name=\"\" /></td></tr>
+					<tr><td>Date prélevement :</td><td> <input type=\"text\" name=\"\" /></td></tr>
+					<tr><td>Date Rappel :</td><td><input type=\"password\" name=\"\" /></td></tr>
+					<tr><td></td><td><input type=\"submit\" value=\"connection\" name=\"\" /></td></tr>
+					</form>";
+		return $form;
+	}
 	
 	public  static function login($controler)
 	{
@@ -60,37 +80,30 @@ class theme extends abstracttheme {
 					<tr><td>mail :</td><td> <input type=\"text\" name=\"".$controler."_mail\" /></td></tr>
 					<tr><td>mot de passe : </td><td><input type=\"password\" name=\"".$controler."_psw\" /></td></tr>
 					<tr><td></td><td><input type=\"submit\" value=\"connection\" name=\"".$controler."_submit\" /></td></tr>
-					</form>
-				
-				";
+					</form>";
 	}
+	
 	public static function signupowner()
 	{
-		return   "
-				
-					<form method=\"POST\" action=\"".urlpage("signup")."\">
+		return   "<form method=\"POST\" action=\"".urlpage("signup")."\">
 			
 						<tr class=\"table_title\"><td>Sinon inscrivez vous rapidement</td></tr>
 						<tr><td>societe/nom : </td><td><input type=\"text\" name=\"signup_name\"></td></tr>
 						<tr><td>nom : </td><td><input type=\"text\" name=\"signup_lastname\"></td></tr>
 						<tr><td>prenom : </td><td><input type=\"text\" name=\"signup_firstname\"></td></tr>
-						<tr><td>mail : </td><td><input type=\"text\" name=\"signup_mail\"></td></tr>
+						<tr><td>mail : </td><td><input type=\"text\" name=\"signup_mail\"></td></tr> 
 						<tr><td>mdp : </td><td><input type=\"password\" name=\"signup_mdp\"></td></tr>
 						<tr><td></td><td><input type=\"submit\" value=\"enregistrer\" name=\"signup_account\"></td></tr>
 					</form>
 					</table>
-				</div><br>
-				";
+				</div><br>";
 	}
+	
 	public static function signuptenant()
 	{
-		
-		
-		return "
-				
-					<form method=\"POST\" action=\"".urlpage("signup")."\">
+		return "<form method=\"POST\" action=\"".urlpage("signup")."\">
 						<tr class=\"table_title\"><td>Sinon inscrivez vous gratuitement</td></tr>
-						<tr><td>code du propri�taire : </td><td><input type=\"text\" name=\"signup_code_owner\"></td></tr>
+						<tr><td>code du propriétaire : </td><td><input type=\"text\" name=\"signup_code_owner\"></td></tr>
 						<tr><td>nom : </td><td><input type=\"text\" name=\"signup_name\"></td></tr>
 						<tr><td>mail : </td><td><input type=\"text\" name=\"signup_mail\"></td></tr>
 						<tr><td>mdp : </td><td><input type=\"password\" name=\"signup_mdp\"></td></tr>
@@ -98,10 +111,7 @@ class theme extends abstracttheme {
 						<tr><td>pays : </td><td><input type=\"text\" name=\"signup_country\"></td></tr>
 						<tr><td></td><td><input type=\"submit\" value=\"enregistrer\" name=\"signup_tenant\"></td></tr>
 					</form>
-				</table>
-					
-				</div><br>
-				";
+				</table></div><br>";
 	}
 	
 	
@@ -188,13 +198,13 @@ class theme extends abstracttheme {
 	
 	public  function built() 
 	{
-		print_r( utf8_encode($this->head()));
-		print_r( utf8_encode($this->nav()));
-		print_r( utf8_encode($this->sidebar()));
-		print_r( utf8_encode($this->contents()));
-		print_r( utf8_encode($this->footer()));
+		print_r( utf8_decode($this->head()));
+		print_r( utf8_decode($this->nav()));
+		print_r( utf8_decode($this->sidebar()));
+		print_r( utf8_decode($this->contents()));
+		print_r( utf8_decode($this->footer()));
 	}
 	
 	
 	
-}
+}?>
