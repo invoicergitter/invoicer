@@ -30,7 +30,7 @@ abstract class table
 	public function all($array = array())
 	{
 		$query = "SELECT *
-				  FROM ".$this->table.db::getWhere($array);
+				  FROM ".$this->table." ".db::getWhere($array);
 		$db = new db();
 		$result = $db->query($query);
 		return $this->factory($result);

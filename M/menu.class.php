@@ -17,13 +17,13 @@ Class menu {
 		}
 		elseif(isset($_SESSION['tenant']))
 		{
-			$menu['transaction'] = array('name' => ucfirst('transaction'), 'sub' => array('addtransaction'=>"ajouter loyer"));
+			$menu['transaction'] = array('name' => ucfirst('transaction'), 'sub' => array('addtransaction'=>"ajouter loyer",'transaction' => "voir les transactions"));
 			$menu['configuration'] = array('name' => ucfirst('cofiguration'), 'sub' => array());
 		}
 		else 
 		{
 			$menu["tenant"] = array('name' => ucfirst('payer votre loyer en ligne'), 'sub' => array());
-			$menu["owner"] = array('name' => ucfirst(utf8_decode('Propriétaire')), 'sub' => array());
+			$menu["owner"] = array('name' => ucfirst('Propriétaire'), 'sub' => array());
 		}
 		
 		

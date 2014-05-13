@@ -1,18 +1,6 @@
 <?php
 class log
-{
-	
-	
-	public static function showfail($msg)
-	{
-		return "<center><p style=\"color:red;\">".$msg."</p></center>";
-	}
-	
-	public static function showsuccess($msg)
-	{
-		return "<center><p style=\"color:green;\">".$msg."</p></center>";
-	}
-	
+{	
 	public static function errorDB($msg)
 	{
 		$link = $GLOBALS['param']['link_data']."log/db.log";
@@ -47,6 +35,13 @@ class log
 		{
 			mail("abdelrhamane@invoicer.fr", "bot : new account", $msg);
 		}
+	}
+	
+	public static function Transaction($msg)
+	{
+		$link = $GLOBALS['param']['link_data']."log/writetransaction.log";
+		$msg = date("d-m-Y h:m:s",time()). "  //  ".$msg."\n";
+		self::write($link, $msg);
 	}
 	
 	private static function write($link,$msg)

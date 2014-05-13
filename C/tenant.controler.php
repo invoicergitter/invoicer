@@ -86,7 +86,6 @@ class controlertenant extends abstractcontroler
 			}
 		}
 		$GLOBALS['articles'][] = "<img class=\"img_presentation\"src=\"".$GLOBALS['param']['link_style_rep']."images/tenant.jpg\" alt=\"Locataire\"/>";
-		$GLOBALS['articles'][] = theme::login("tenant");
-		$GLOBALS['articles'][] = theme::signuptenant();
+		$GLOBALS['articles'][] = theme::login("tenant").theme::signuptenant();
 	}
 }

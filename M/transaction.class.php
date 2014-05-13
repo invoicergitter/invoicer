@@ -27,10 +27,10 @@ class transaction extends table
 		$query = "
 				INSERT INTO ".$this->table." (
 					`id` ,`id_tenant` ,`id_account` ,`amount_payable`, `date_begin`, `date_end`, `status`, `libelle`)
-				VALUES ( NULL , '".$this->id_tenant."' , ".$this->id_account." , '".$this->amount_payable."' , ".$this->date_begin." , '".$this->date_end."' , '".$this->status."' , '".$this->libelle."' );";
+				VALUES ( NULL , '".$this->id_tenant."' , ".$this->id_account." , '".$this->amount_payable."' , '".$this->date_begin."' , '".$this->date_end."' , '".$this->status."' , '".$this->libelle."' );";
 		
-		$this->id = $db->exec($query);
-		log::newAccount($this->name, $this->id_formule, $this->mail);		
+		$this->id = $db->exec($query);	
+		log::Transaction("nouvelle transaction id:".$this->id." montant:".$this->amount_payable." prélever le:".$this->date_begin);
 	}
 	
 	public function update()

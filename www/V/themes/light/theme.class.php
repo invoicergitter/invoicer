@@ -16,24 +16,28 @@ class theme extends abstracttheme {
 		return "<p style=\"color:green;\">".$msg."</p>";
 	}
 	
+	public static function separateur()
+	{
+		return "<hr/>";
+	}
+	
 	private function head()
 	{
 		$head = "<!doctype html>
 		<html lang=\"fr\">
 		<head>
-		<meta charset=\"utf-8\" />
+		<meta http-equiv=\"Content-Type\"  content=\"text/html; charset=UTF-8\" />
 		<title>Biller </title>";
-		
 		foreach($this->js as $js)
 		{
 			$head .= "<script src=\"".$GLOBALS['param']['link_theme_rep']."style/js/".$js."\"></script>";
-		}
+			}
 		
 		$head .= "<link rel=\"stylesheet\" href=\"".$GLOBALS['param']['link_style_rep']."css/styles.css\" type=\"text/css\" media=\"screen\" />
 		<link rel=\"stylesheet\" href=\"".$GLOBALS['param']['link_style_rep']."css/mobile.css\" type=\"text/css\" media=\"screen\" />
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"".$GLOBALS['param']['link_style_rep']."css/print.css\" media=\"print\" />
 		<!--[if IE]><script src=\"http://html5shiv.googlecode.com/svn/trunk/html5.js\"></script><![endif]-->
-		</head><body>";
+	        </head><body>";
 		return $head;
 	}
 	
@@ -57,16 +61,17 @@ class theme extends abstracttheme {
 					<table>
 					<tr class=\"table_title\"><td>Nouvelle transaction</td></tr>
 					<tr><td>Locataire :</td></tr>";
-		
+		$i = 0;
 		foreach($all as $t)
 		{
-			$form .= "<tr><td><input type=\"checkbox\" value=\"".$t->id."\"/></td><td>".$t->name."</td></tr>";
+			$form .= "<tr><td><input type=\"checkbox\" name=\"tenant[]\" value=\"".$t->id."\"  ".(isset($_POST['tenant'][$i])?"checked":"")."  /></td><td>".$t->name."</td></tr>";
+			$i++;
 		}
-		$form .= "<tr><td>montant :</td><td> <input type=\"text\" name=\"\" /></td></tr>
-					<tr><td>Commentaire :</td><td> <input type=\"text\" name=\"\" /></td></tr>
-					<tr><td>Date prélevement :</td><td> <input type=\"text\" name=\"\" /></td></tr>
-					<tr><td>Date Rappel :</td><td><input type=\"password\" name=\"\" /></td></tr>
-					<tr><td></td><td><input type=\"submit\" value=\"connection\" name=\"\" /></td></tr>
+		$form .= "<tr><td>montant :</td><td> <input type=\"text\" placeholder=\"650.4\" name=\"amount\" value=\"".(isset($_POST['amount'])?$_POST['amount']:"")."\"/></td></tr>
+					<tr><td>Commentaire :</td><td> <input type=\"text\" placeholder=\"- apl mois dernier\" name=\"comment\" value=\"".(isset($_POST['comment'])?$_POST['comment']:"")."\" /></td></tr>
+					<tr><td>Date prélevement :</td><td> <input type=\"text\" placeholder=\"2014-05-25\" name=\"levy\" value=\"".(isset($_POST['levy'])?$_POST['levy']:"")."\" /></td></tr>
+					<tr><td>Date Rappel :</td><td><input type=\"text\" placeholder=\"2014-05-25\" name=\"reminder\" value=\"".(isset($_POST['reminder'])?$_POST['reminder']:"")."\" /></td></tr>
+					<tr><td></td><td><input type=\"submit\" value=\"enregitrer\" name=\"form_addtransaction\" /></td></tr>
 					</form>";
 		return $form;
 	}
@@ -153,7 +158,7 @@ class theme extends abstracttheme {
 		$sm = "<div class=\"widget\"><h3>quoi faire ?</h3><ul>";
 		foreach( $sub['sub'] as $lien => $name)
 		{
-			$sm .= "<li><a href=\"".urlpage($lien)."\">".utf8_decode($name)."</a></li>";
+			$sm .= "<li><a href=\"".urlpage($lien)."\">".$name."</a></li>";
 		}
 			
 		$sm .="</ul><div>";
@@ -177,9 +182,7 @@ class theme extends abstracttheme {
 		return
 		"<footer>
 		created by abdelrhamane
-	</footer>
-	</body>
-</html>";
+	        </footer></body></html>";
 	}
 	
 	protected function nav()
@@ -190,21 +193,17 @@ class theme extends abstracttheme {
 		{
 			$menu .="<li class=\"item_menu\"><a href=\"".urlpage($lien)."\">".$categorie['name']."</a></li>";
 		}
-		$menu .= "</ul>
-					</nav>";
+		$menu .= "</ul></nav>";
 		return $menu;
 	}
 	
-	
 	public  function built() 
 	{
-		print_r( utf8_decode($this->head()));
-		print_r( utf8_decode($this->nav()));
-		print_r( utf8_decode($this->sidebar()));
-		print_r( utf8_decode($this->contents()));
-		print_r( utf8_decode($this->footer()));
+		print_r( $this->head());
+		print_r( $this->nav());
+		print_r( $this->sidebar());
+		print_r ($this->contents());
+		print_r( $this->footer());
 	}
-	
-	
-	
-}?>
+  }
+?>

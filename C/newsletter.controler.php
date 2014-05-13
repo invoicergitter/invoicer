@@ -16,11 +16,11 @@ class controlernewsletter extends abstractcontroler
 				$newsletter->homeowner = 1;
 				$newsletter->company = 1;
 				$newsletter->insert();
-				$return .= "les actualitées seront envoyées à ".$_REQUEST['newsletter_mail'];
+				$return .= "les actualitÃ©es seront envoyÃ©s Ã  ".$_REQUEST['newsletter_mail'];
 			}
 			else
 			{
-				$return .= "l'adresse existe dèja  ".$_REQUEST['newsletter_mail'];
+				$return .= "l'adresse existe dÃ¨ja  ".$_REQUEST['newsletter_mail'];
 			}
 			
 			$return .= "</p>" ;
@@ -34,7 +34,7 @@ class controlernewsletter extends abstractcontroler
 				if ($newsletter->id > 0)
 				{
 					$newsletter->delete();
-					$return .= "les mails ne seront plus envoyaient à ".$_REQUEST['newsletter_mail'];
+					$return .= "les mails ne seront plus envoyaient ï¿½ ".$_REQUEST['newsletter_mail'];
 				}
 				$return .= "</p>";
 				$GLOBALS['articles'][] = $return;
