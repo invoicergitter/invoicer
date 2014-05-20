@@ -1,5 +1,5 @@
 <?php
-class controlercontact extends abstractcontroler
+class controlercontact extends controler
 {
 	public static function action()
 	{

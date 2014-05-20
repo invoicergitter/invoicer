@@ -1,5 +1,5 @@
 <?php
-class controlernewsletter extends abstractcontroler
+class controlernewsletter extends controler
 {
 	public static function action()
 	{

@@ -1,5 +1,5 @@
 <?php
-class controlerhome extends abstractcontroler
+class controlerhome extends controler
 {
 	public static function action()
 	{
@@ -17,7 +17,14 @@ class controlerhome extends abstractcontroler
 		}
 		else 
 		{
-			$GLOBALS['articles'][] = "HOME PAGE";
+			$GLOBALS['articles'][] = "<div class=\"media col-lg-12\"><div class=\"pull-right\">
+    <iframe width=\"420\" height=\"320\" src=\"//www.youtube.com/embed/YXVoqJEwqoQ\" frameborder=\"0\" allowfullscreen></iframe>
+  </div>
+  <div class=\"media-body pull-left\">
+    <h4 class=\"media-heading\">Faite respecter vos droits de Locataire et Propriétaire</h4>
+    tout en image...
+  </div>
+</div>";
 		}
 	}
 }

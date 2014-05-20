@@ -29,7 +29,7 @@ $param['db_psw'] = '';
 /*
  * theme params
  */
-$param['theme'] = 'light';
+$param['theme'] = 'bootstrap';
 $param['link_theme_rep'] = "V/themes/".$param['theme']."/";
 $param['link_style_rep'] = $param['link_theme_rep']."style/";
 

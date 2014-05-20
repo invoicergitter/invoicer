@@ -52,14 +52,19 @@ class theme extends abstracttheme {
 	return $contents;
 	}
 	
+	public static function Title($title)
+	{
+		return "<center><h1>".$title."</h1></center><br>";
+	} 
 	public static function formaddtransaction()
 	{
 		$tenant = new tenant();
 		$all = $tenant->all();	
 		$form = "<div class=\"form\">
+				<p class=\"table_title\">Nouvelle transaction</p>
 					<form method=\"POST\" action=\"\">
+				
 					<table>
-					<tr class=\"table_title\"><td>Nouvelle transaction</td></tr>
 					<tr><td>Locataire :</td></tr>";
 		$i = 0;
 		foreach($all as $t)
@@ -180,9 +185,7 @@ class theme extends abstracttheme {
 	protected function  footer()
 	{
 		return
-		"<footer>
-		created by abdelrhamane
-	        </footer></body></html>";
+		"</body></html>";
 	}
 	
 	protected function nav()

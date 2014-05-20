@@ -1,5 +1,5 @@
 <?php
-class controlerowner extends abstractcontroler
+class controlerowner extends controler
 {
 	public static function action()
 	{
@@ -85,8 +85,8 @@ class controlerowner extends abstractcontroler
 			}
 		}
 		
-		$GLOBALS['articles'][] = "<img class=\"img_presentation\"src=\"".$GLOBALS['param']['link_style_rep']."images/homeowner.jpg\" alt=\"Propri�taire\"/>";
-		$GLOBALS['articles'][] = theme::login("owner");
-		$GLOBALS['articles'][] = theme::signupowner();
+		$GLOBALS['articles'][] = array('type'=> 'band', 'data'=>"<center><img class=\"img-responsive\" src=\"".$GLOBALS['param']['link_style_rep']."images/homeowner.jpg\" alt=\"Propri�taire\" /></center><br>");
+		$GLOBALS['articles'][] = array('type'=> 'block', 'data'=> theme::login("owner"));
+		$GLOBALS['articles'][] = array('type'=> 'block', 'data'=> theme::signupowner());
 	}
 }

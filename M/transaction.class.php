@@ -50,4 +50,19 @@ class transaction extends table
 		return ($result > 0)?true:false;
 	}
 	
+	public function form()
+	{
+		$tenant = new tenant();
+		$tenant->load(array('id' => $this->id_tenant));
+		$form = "<br><form class=\"modif\" method=\"POST\" action=\"\" ><table>";
+		$form .= "<tr><td>Nom locataire : </td><td>".$tenant->name."</td></tr>";
+		$form .= "<tr><td>à payé le : </td><td><input type=\"text\" name=\"amount\" value=\"".$this->date_begin."\" /></td></tr>";
+		$form .= "<tr><td>commencer les rappels le : </td><td><input type=\"text\" name=\"amount\" value=\"".$this->date_end."\" /></td></tr>";
+		$form .= "<tr><td>montant : </td><td><input type=\"text\" name=\"amount\" value=\"".$this->amount_payable."\" /></td></tr>";
+		$form .= "<tr><td>montant payé : </td><td> ".(isset($this->amount_paid)?$this->amount_paid:0)."€</td></tr>";
+		$form .= "<tr><td>commentaire : </td><td><textarea name=\"libelle\">".$this->libelle."</textarea></td></tr>";
+		$form .= "</table><form>";
+		return $form;
+	}
+	
 }

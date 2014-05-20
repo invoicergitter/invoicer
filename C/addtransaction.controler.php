@@ -1,5 +1,5 @@
 <?php
-class controleraddtransaction extends abstractcontroler
+class controleraddtransaction extends controler
 {
 	public static function action()
 	{
@@ -10,20 +10,16 @@ class controleraddtransaction extends abstractcontroler
 		}
 		$account = unserialize($_SESSION['account']);
 		$user = unserialize($_SESSION['user']);
-		if (isset($_POST['tenant']))
+		if (isset($_POST['transaction']))
 		{
-			if(!isset($_POST['amount']) or empty($_POST['amount']) )
-			{
-				$GLOBALS['articles'][] = theme::showfail("le montant n'est pas saisie");
-			}
-			elseif(!isset($_POST['levy']) or empty($_POST['levy']))
+			if(!isset($_POST['levy']) or empty($_POST['levy']))
 			{
 				$GLOBALS['articles'][] = theme::showfail("la date de prélévement n'est pas saisie");
 			}
 			else 
 			{
 				$nbinserted = 0;
-				foreach ($_POST['tenant'] as $id_tenant)
+				foreach ( $_POST['transaction'] as $id_tenant => $amount)
 				{
 					$tenant = new tenant();
 					$tenant->load(array('id' => $id_tenant));
@@ -35,7 +31,7 @@ class controleraddtransaction extends abstractcontroler
 							cassetoi();
 						}
 						$transaction = new transaction();
-						$transaction->amount_payable = $_POST['amount'];
+						$transaction->amount_payable = $amount;
 						$transaction->date_begin = $_POST['levy'];
 						$transaction->date_end = isset($_POST['reminder'])?$_POST['reminder']:0;
 						$transaction->libelle = isset($_POST['comment'])?$_POST['comment']:"";
@@ -51,7 +47,6 @@ class controleraddtransaction extends abstractcontroler
 				}	
 			}
 		}
-		$GLOBALS['articles'][] = "<p>ajouter une nouvelle transaction</p>";
 		$GLOBALS['articles'][] = theme::formaddtransaction();
 	}
 }

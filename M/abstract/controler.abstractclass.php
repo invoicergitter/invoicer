@@ -1,5 +1,5 @@
 <?php
-abstract class abstractcontroler
+abstract class controler
 {
 	public static abstract function action();
 }

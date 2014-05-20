@@ -1,5 +1,5 @@
 <?php
-class controlertenant extends abstractcontroler
+class controlertenant extends controler
 {
 	public static function action()
 	{
@@ -85,7 +85,8 @@ class controlertenant extends abstractcontroler
 				$GLOBALS['articles'][] = theme::showfail("identifiant ou mot de passe incorrect");
 			}
 		}
-		$GLOBALS['articles'][] = "<img class=\"img_presentation\"src=\"".$GLOBALS['param']['link_style_rep']."images/tenant.jpg\" alt=\"Locataire\"/>";
-		$GLOBALS['articles'][] = theme::login("tenant").theme::signuptenant();
+		$GLOBALS['articles'][] = array('type'=>"band" ,'data' => "<center><img class=\"img-rounded\"src=\"".$GLOBALS['param']['link_style_rep']."images/tenant.jpg\" alt=\"Locataire\"/></center><br>");
+		$GLOBALS['articles'][] = array('type'=>"block" ,'data' =>theme::login("tenant"));
+		$GLOBALS['articles'][] = array('type'=>"block" ,'data' =>theme::signuptenant()."</center>");
 	}
 }

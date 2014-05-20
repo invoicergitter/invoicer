@@ -46,5 +46,5 @@ function have_tenant_access()
 
 function cassetoi()
 {
-	header('location:index.php;');
+	header('location:index.php');
 }

@@ -1,8 +1,8 @@
 <?php
-class controler404 extends abstractcontroler
+class controler404 extends controler
 {
 	public static function action()
 	{
-		$GLOBALS['articles'][] = "<h3>page introuvable</h3>";
+		$GLOBALS['articles'][] = "<h3>erreur 404 : page introuvable</h3>";
 	}
 }
