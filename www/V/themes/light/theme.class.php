@@ -56,6 +56,12 @@ class theme extends abstracttheme {
 	{
 		return "<center><h1>".$title."</h1></center><br>";
 	} 
+	
+	public static function formpaiement()
+	{
+		return "";
+	}
+	
 	public static function formaddtransaction()
 	{
 		$tenant = new tenant();

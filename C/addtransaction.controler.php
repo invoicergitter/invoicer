@@ -47,6 +47,6 @@ class controleraddtransaction extends controler
 				}	
 			}
 		}
-		$GLOBALS['articles'][] = theme::formaddtransaction();
+		$GLOBALS['articles'][] = array("type"=> "block","data"=>theme::formaddtransaction());
 	}
 }

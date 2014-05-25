@@ -33,14 +33,14 @@ class theme extends abstracttheme {
 	private function head()
 	{
 		$head = "<!DOCTYPE html>
-			<html lang=\"en\">
+			<html lang=\"fr\">
   				<head>
 				    <meta charset=\"utf-8\">
 				    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">
 				    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
 				    <meta name=\"description\" content=\"\">
 				    <meta name=\"author\" content=\"\">
-				    <link rel=\"shortcut icon\" href=\"../../assets/ico/favicon.ico\">
+				    <link rel=\"shortcut icon\" href=\"".$GLOBALS['param']['link_theme_rep']."style/images/invoicer.ico\">
 				    <title>Invoicer</title>
 	";
 		foreach($this->js as $js)
@@ -68,7 +68,7 @@ class theme extends abstracttheme {
 	
 	private function contents()
 	{
-		$contents =  "<div class=\"container\">";
+		$contents = "" ;
 		foreach ($this->articles as $article)
 		{
 			if(is_array($article))
@@ -77,14 +77,17 @@ class theme extends abstracttheme {
 				{
 					case "message":
 					case "band":
-						$contents .= $article['data'];
+						$contents .= "<div class=\"container\">".$article['data']."</div>";
 						break;
 					case "border":
-						$contents .= "<div class=\"thumbnail\">".$article['data']."</div>";
+						$contents .= "<div class=\"container\">"."<div class=\"thumbnail\">".$article['data']."</div><div>";
 						break;
+					case "simple":
+							$contents .= "<div class=\"container\">".$article['data']."<div>";
+							break;
 					case "block":
 					default:
-						$contents .= "<div class=\"jumbotron\">".$article['data']."</div>";
+						$contents .= "<div class=\"container\"><div class=\"jumbotron\">".$article['data']."</div></div>";
 				}
 			}
 			else 
@@ -93,8 +96,25 @@ class theme extends abstracttheme {
 			}
 			
 		}
-		$contents .= "</div>";
 	return $contents;
+	}
+	
+	public static function formpaiement()
+	{
+		return "<center><form method=\"POST\"  class=\"col-lg-6\" action=\"".urlpage("paiement")."\">
+						<legend>Facture</legend>
+						Montant : <p>500€</p>
+				Numéro de carte :
+				<div class=\"row\"> 
+					<div class=\"col-xs-3\" ><input class=\"form-control\"  required=\"\" type=\"text\" name=\"n1\"></div>
+					<div class=\"col-xs-3\" ><input class=\"form-control\" required=\"\" type=\"text\" name=\"n2\"></div>
+					<div class=\"col-xs-3\" ><input class=\"form-control\" required=\"\" type=\"text\" name=\"n3\"></div>
+					<div class=\"col-xs-3\" ><input class=\"form-control\" required=\"\" type=\"text\" name=\"n4\"></div>
+				</div>
+				Titulaire de la carte : <input class=\"form-control\" required=\"\" type=\"text\" name=\"name\">
+				Pictogram : <input class=\"form-control\"  required=\"\" type=\"text\" name=\"picto\">
+				<input class=\"form-control btn btn-primary\" type=\"submit\" value=\"payer\" name=\"signup_account\">
+				</form></center>";
 	}
 	
 	public static function Title($title)
@@ -237,7 +257,14 @@ class theme extends abstracttheme {
     <script src=\"".$GLOBALS['param']['link_style_rep']."js/jquery.min.js\"></script>
     <script src=\"".$GLOBALS['param']['link_style_rep']."js/bootstrap.min.js\"></script>
     <script src=\"".$GLOBALS['param']['link_style_rep']."js/bootstrap-datepicker.js\"></script>
-  	<center>created by abdelrhamane</center>
+  	<footer class=\"footer\">
+    		<center><div class= \"container\">
+    			<div class=\"company-details\">
+    		   	 	Copyright &copy; 2014<br> All right reserved &reg; <br>By Invoicer.fr<br>
+    			</di>
+    		</div></center>
+    </footer>	
+	
     </body>
 </html>
 	";
@@ -282,15 +309,4 @@ class theme extends abstracttheme {
 		print_r( $this->footer());
 	}
   }
-  
- class Calendar { 	
- 	public function __construct()
- 	{
- 	}
- 	
- 	public static function built($name = "")
- 	{
- 		return "";
- 	}
- }
 ?>

@@ -5,7 +5,7 @@ Class menu {
 	public static function gridMenu() {
 		
 		$menu = array();
-		$menu["home"] = array('name' => ucfirst(voc('home')), 'sub' => array());
+		$menu["home"] = array('name' => ucfirst(('Accueil')), 'sub' => array());
 		
 		$ownerchoose = array();
 		$tenantchoose = array();
@@ -22,10 +22,11 @@ Class menu {
 		}
 		else 
 		{
-			$menu["tenant"] = array('name' => ucfirst('payer votre loyer en ligne'), 'sub' => array());
-			$menu["owner"] = array('name' => ucfirst('Propriétaire'), 'sub' => array());
+			$menu["tenant"] = array('name' => ucfirst('payer votre loyer en ligne'), 'sub' => array("contact"=>"contactez nous"));
+			$menu["owner"] = array('name' => ucfirst('Propriétaire'), 'sub' => array("contact"=>"contactez nous"));
+			$menu["entreprise"] = array('name' => ucfirst('Entreprise'), 'sub' => array("contact"=>"contactez nous"));
+			
 		}	
 		return $menu;
 	}
 }
-?>

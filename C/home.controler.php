@@ -13,18 +13,40 @@ class controlerhome extends controler
 		{
 				$user = unserialize($_SESSION['user']);
 				$GLOBALS['articles'][] = theme::showsuccess("bonjour ".$user->firstname." ".$user->lastname);
-				$GLOBALS['articles'][] = "<p>vous souhaiter réclamer un nouveau loyer : <a href=\"".urlpage("addtransaction")."\">ici</a></p>";
+				$GLOBALS['articles'][] = array("type"=>"block","data"=>"<p>vous souhaiter réclamer un nouveau loyer : <a href=\"".urlpage("addtransaction")."\">ici</a></p>");
 		}
 		else 
 		{
-			$GLOBALS['articles'][] = "<div class=\"media col-lg-12\"><div class=\"pull-right\">
-    <iframe width=\"420\" height=\"320\" src=\"//www.youtube.com/embed/YXVoqJEwqoQ\" frameborder=\"0\" allowfullscreen></iframe>
-  </div>
-  <div class=\"media-body pull-left\">
-    <h4 class=\"media-heading\">Faite respecter vos droits de Locataire et Propriétaire</h4>
-    tout en image...
-  </div>
-</div>";
+			$GLOBALS['articles'][] = "<div class=\"media col-lg-12\">
+					  					<div class=\"media-body pull-left\">
+					    						<h3 class=\"media-heading\">La gestion de bien immobilier ne sera plus jamais pareil.</h3>
+												<h4>payer simplement votre loyer sur internet. Plus d'information, vous êtes ?</h4>
+					 				    </div>
+									</div>";
+			
+			$GLOBALS['articles'][] =  array("type"=>"simple" ,'data' => "
+							<div class=\"row\">
+									<center><div class=\"col-md-4 pull-middle\">
+  											<img class=\"img img-thumbnail\" src=\"".$GLOBALS['param']['link_style_rep']."images/present-tenant.jpg\" alt=\"tenant\" style=\"width: 140px; height: 140px;\" />
+											<h2>Locataire</h2>	<br>
+											payer votre loyer en ligne<br>
+											<a class=\"btn btn-success\" role=\"button\" href=\"".urlpage("presentation&visitor=entreprise")."\">plus d'info</a>
+									</div>
+									<div class=\"col-md-4 pull-center\">
+											<img  class=\"img img-thumbnail\" src=\"".$GLOBALS['param']['link_style_rep']."images/present-owner.jpg\" alt=\"homeowner\" style=\"width: 140px; height: 140px;\" />
+  											<h2>Propriétaire</h2><br>
+											gérer vos biens immobilier simplement<br>
+											<a class=\"btn btn-success\" role=\"button\" href=\"".urlpage("presentation&visitor=entreprise")."\">plus d'info</a>
+									</div>
+									<div class=\"col-md-4 pull-center\">
+											<img class=\"img img-thumbnail\" src=\"".$GLOBALS['param']['link_style_rep']."images/present-notaire.jpg\" alt=\"entreprise\" style=\"width: 140px; height: 140px;\" />
+  											<h2>Entreprise</h2><br>
+											Notaire, Agence immobiliaire<br>
+											ce site vous est aussi destiné <br>
+											<a class=\"btn btn-success\" role=\"button\" href=\"".urlpage("presentation&visitor=entreprise")."\">plus d'info</a>
+									</div></center>
+							</div><br><hr><br><br>
+									 ");
 		}
 	}
 }
