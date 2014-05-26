@@ -1,4 +1,7 @@
 <?php
+/*
+  Copyright (C)  2014 Abdelrhamane benhammou
+*/
 session_start();
 /*
  * define special param before include.php

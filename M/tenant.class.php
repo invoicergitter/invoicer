@@ -1,4 +1,7 @@
 <?php
+/*
+  Copyright (C)  2014 Abdelrhamane benhammou
+*/
 class tenant extends table
 {
 	

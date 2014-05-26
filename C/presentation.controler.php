@@ -1,4 +1,7 @@
 <?php
+/*
+  Copyright (C)  2014 Abdelrhamane benhammou
+*/
 class controlerpresentation extends controler
 {
 	public static function action()

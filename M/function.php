@@ -1,4 +1,7 @@
 <?php
+/*
+  Copyright (C)  2014 Abdelrhamane benhammou
+*/
 function voc($str)
 {
 	if(array_key_exists($str, $GLOBALS['voc']))

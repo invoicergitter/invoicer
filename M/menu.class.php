@@ -1,5 +1,7 @@
 <?php
-
+/*
+  Copyright (C)  2014 Abdelrhamane benhammou
+*/
 Class menu {
 	
 	public static function gridMenu() {

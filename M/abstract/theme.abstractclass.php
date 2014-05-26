@@ -1,5 +1,7 @@
 <?php
-
+/*
+  Copyright (C)  2014 Abdelrhamane benhammou
+*/
 abstract Class abstracttheme {
 	protected $articles = array();
 	protected $widgets = array();
