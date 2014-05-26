@@ -1,0 +1,1 @@
+cette application est à desination de tout les utilisateurs qui gravitent autour de biens immobilier c'est à dire les locataires, propriétaires, notaires et agences immobilière.
